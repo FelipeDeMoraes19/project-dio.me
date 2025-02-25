@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "products")
 @Data
@@ -32,7 +34,7 @@ public class Product {
     @NotNull(message = "Price is mandatory")
     @Positive(message = "Price must be greater than zero")
     @Column(nullable = false, precision = 10, scale = 2)
-    private Double price;
+    private BigDecimal price;
 
     @Builder.Default
     @Column(nullable = false)

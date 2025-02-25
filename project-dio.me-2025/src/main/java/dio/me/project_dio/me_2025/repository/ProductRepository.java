@@ -18,4 +18,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query("SELECT p FROM Product p WHERE p.id = :id AND p.active = true")
     Optional<Product> findActiveById(@Param("id") Long id);
+
+    @Query("SELECT CASE WHEN COUNT(p) > 0 THEN true ELSE false END FROM Product p WHERE p.name = :name AND p.active = true")
+    boolean existsByName(@Param("name") String name);
 }
