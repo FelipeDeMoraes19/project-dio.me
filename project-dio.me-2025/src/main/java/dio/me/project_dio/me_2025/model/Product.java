@@ -33,10 +33,19 @@ public class Product {
 
     @NotNull(message = "Price is mandatory")
     @Positive(message = "Price must be greater than zero")
+    @Digits(integer = 10, fraction = 2, message = "Invalid price format")
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
 
     @Builder.Default
     @Column(nullable = false)
     private Boolean active = true;
+
+    public void deactivate() {
+        this.active = false;
+    }
+
+    public void activate() {
+        this.active = true;
+    }
 }
